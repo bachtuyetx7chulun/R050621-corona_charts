@@ -1,7 +1,7 @@
 import { FormControl, InputLabel, MenuItem } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Select from "@material-ui/core/Select";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -13,13 +13,31 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SelectGeo() {
+export default function GeoSelection({ data }) {
   const classes = useStyles();
   const [value, setValue] = useState("");
+  const [countries, setCountries] = useState([]);
+  useEffect(() => {
+    const insertData = () => {
+      setCountries(data);
+    };
+
+    insertData();
+  }, [data]);
+
+  const generateCountries = () => {
+    return countries.map((country, index) => {
+      return (
+        <MenuItem key={index} value={country.ISO2}>
+          {country.Country}
+        </MenuItem>
+      );
+    });
+  };
 
   return (
     <div>
-      {value}
+      <p>Choose country: {value}</p>
       <FormControl variant="filled" className={classes.formControl}>
         <InputLabel htmlFor="">Country</InputLabel>
         <Select
@@ -28,12 +46,7 @@ export default function SelectGeo() {
           value={value}
           onChange={(e) => setValue(e.target.value)}
         >
-          <MenuItem value="">
-            <em>None</em>
-          </MenuItem>
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
+          {generateCountries()}
         </Select>
       </FormControl>
     </div>

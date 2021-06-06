@@ -1,9 +1,182 @@
-import React from 'react'
+import HighchartsReact from "highcharts-react-official";
+import React from "react";
+import HighCharts from "highcharts";
 
 export default function ChartDisplay() {
-    return (
-        <div>
-            Chart
-        </div>
-    )
+  let list = [
+    {
+      ID: "14d37736-7f13-4bcd-998a-0251f6da815b",
+      Country: "South Africa",
+      CountryCode: "ZA",
+      Province: "",
+      City: "",
+      CityCode: "",
+      Lat: "-30.56",
+      Lon: "22.94",
+      Confirmed: 1,
+      Deaths: 0,
+      Recovered: 0,
+      Active: 1,
+      Date: "2020-03-05T00:00:00Z",
+    },
+    {
+      ID: "a710b8fa-b77e-494d-bc8a-21a015c8100b",
+      Country: "South Africa",
+      CountryCode: "ZA",
+      Province: "",
+      City: "",
+      CityCode: "",
+      Lat: "-30.56",
+      Lon: "22.94",
+      Confirmed: 1,
+      Deaths: 0,
+      Recovered: 0,
+      Active: 1,
+      Date: "2020-03-06T00:00:00Z",
+    },
+    {
+      ID: "a9589e59-8bd8-42ed-a3ef-6f8189c27978",
+      Country: "South Africa",
+      CountryCode: "ZA",
+      Province: "",
+      City: "",
+      CityCode: "",
+      Lat: "-30.56",
+      Lon: "22.94",
+      Confirmed: 1,
+      Deaths: 0,
+      Recovered: 0,
+      Active: 1,
+      Date: "2020-03-07T00:00:00Z",
+    },
+    {
+      ID: "9ece5bec-3197-414f-bf53-9705e2d7770a",
+      Country: "South Africa",
+      CountryCode: "ZA",
+      Province: "",
+      City: "",
+      CityCode: "",
+      Lat: "-30.56",
+      Lon: "22.94",
+      Confirmed: 3,
+      Deaths: 0,
+      Recovered: 0,
+      Active: 3,
+      Date: "2020-03-08T00:00:00Z",
+    },
+    {
+      ID: "5e7fce18-aaec-4cae-8de7-eb5b60e2b7bc",
+      Country: "South Africa",
+      CountryCode: "ZA",
+      Province: "",
+      City: "",
+      CityCode: "",
+      Lat: "-30.56",
+      Lon: "22.94",
+      Confirmed: 3,
+      Deaths: 0,
+      Recovered: 0,
+      Active: 3,
+      Date: "2020-03-09T00:00:00Z",
+    },
+    {
+      ID: "e76df44c-fbc2-4dbc-b71a-6923a8d8352a",
+      Country: "South Africa",
+      CountryCode: "ZA",
+      Province: "",
+      City: "",
+      CityCode: "",
+      Lat: "-30.56",
+      Lon: "22.94",
+      Confirmed: 7,
+      Deaths: 0,
+      Recovered: 0,
+      Active: 7,
+      Date: "2020-03-10T00:00:00Z",
+    },
+    {
+      ID: "9d69baef-e695-4109-b414-7e08eb395c73",
+      Country: "South Africa",
+      CountryCode: "ZA",
+      Province: "",
+      City: "",
+      CityCode: "",
+      Lat: "-30.56",
+      Lon: "22.94",
+      Confirmed: 13,
+      Deaths: 0,
+      Recovered: 0,
+      Active: 13,
+      Date: "2020-03-11T00:00:00Z",
+    },
+    {
+      ID: "95dd2d39-de37-4d68-90b0-f06fdacc514b",
+      Country: "South Africa",
+      CountryCode: "ZA",
+      Province: "",
+      City: "",
+      CityCode: "",
+      Lat: "-30.56",
+      Lon: "22.94",
+      Confirmed: 17,
+      Deaths: 0,
+      Recovered: 0,
+      Active: 17,
+      Date: "2020-03-12T00:00:00Z",
+    },
+    {
+      ID: "420ec446-1dbb-4b83-8945-30529e3c3848",
+      Country: "South Africa",
+      CountryCode: "ZA",
+      Province: "",
+      City: "",
+      CityCode: "",
+      Lat: "-30.56",
+      Lon: "22.94",
+      Confirmed: 24,
+      Deaths: 0,
+      Recovered: 0,
+      Active: 24,
+      Date: "2020-03-13T00:00:00Z",
+    },
+    {
+      ID: "d9eb6ba0-8b20-4a85-9881-f3890201d9f5",
+      Country: "South Africa",
+      CountryCode: "ZA",
+      Province: "",
+      City: "",
+      CityCode: "",
+      Lat: "-30.56",
+      Lon: "22.94",
+      Confirmed: 38,
+      Deaths: 0,
+      Recovered: 0,
+      Active: 38,
+      Date: "2020-03-14T00:00:00Z",
+    },
+  ];
+
+  const options = {
+    title: {
+      text: "",
+    },
+    xAxis: {
+      categories: ["Apples", "Bananas", "Oranges"],
+    },
+    yAxis: {
+      title: {
+        text: "",
+      },
+    },
+    series: [
+      { name: "Affected", data: list.map((item) => item.Confirmed) },
+      { name: "Cured", data: list.map((item) => item.Recovered) },
+    ],
+  };
+
+  return (
+    <div style={{ marginTop: "1rem" }}>
+      <HighchartsReact highcharts={HighCharts} options={options} />
+    </div>
+  );
 }
